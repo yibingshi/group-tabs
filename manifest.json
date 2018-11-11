@@ -5,29 +5,29 @@
   "permissions": [
     "tabs",
     "activeTab",
-    "declarativeContent",
-    "storage"
+    "clipboardWrite"
   ],
   "background": {
     "scripts": [
-      "background.js"
+      "./scripts/background.js"
     ],
     "persistent": false
   },
   "manifest_version": 2,
-  "page_action": {
-    "default_popup": "popup.html",
+  "browser_action": {
+    "default_popup": "./public/popup.html",
     "default_icon": {
-      "16": "images/get_started16.png",
-      "32": "images/get_started32.png",
-      "48": "images/get_started48.png",
-      "128": "images/get_started128.png"
-    }
+      "16": "images/launch_16.png",
+      "32": "images/launch_32.png",
+      "48": "images/launch_48.png",
+      "128": "images/launch_128.png"
+    },
+    "persistent": false
   },
   "icons": {
-    "16": "images/get_started16.png",
-    "32": "images/get_started32.png",
-    "48": "images/get_started48.png",
-    "128": "images/get_started128.png"
+    "16": "images/launch_16.png",
+    "32": "images/launch_32.png",
+    "48": "images/launch_48.png",
+    "128": "images/launch_128.png"
   }
 }

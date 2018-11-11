@@ -1,0 +1,123 @@
+#popup {
+  margin-left: 1em;
+  margin-right: 1em;
+  width: 400px;
+}
+
+#header {
+  text-align: center;
+  margin-top: 15px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid rgba(0,0,0,0.09);
+}
+
+#header > span {
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  color: darkorange;
+  font-weight: 800;
+}
+
+#header > img {
+  width: 25px;
+  height: 25px;
+  padding-right: 5px;
+  vertical-align: middle;
+}
+
+.domain_table {
+  margin-bottom: 10px;
+}
+
+.domain {
+  font-size: large;
+  font-weight: 400;
+  font-family: 'Open Sans', sans-serif;
+  cursor: pointer;
+  text-align: left;
+}
+
+.domain:hover {
+  color: #e6f6fa;
+}
+
+.tab{
+  font-size: 13px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.tab:hover {
+  font-size: 13px;
+  background: #e6f6fa;
+  cursor: pointer;
+}
+
+.domain > img {
+  height: 20px;
+  width: 20px;
+  vertical-align: middle;
+  margin-left: 10px;
+  padding-bottom: 5px;
+}
+
+tbody {
+  width: 400px;
+}
+
+td > span {
+  vertical-align: middle;
+}
+
+.icon {
+  height: 16px;
+  width: 16px;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+.copy {
+  text-align: right;
+  width: 20px;
+  height: 20px;
+}
+
+.copy:hover {
+  background: #e6f6fa;
+  border-radius: 5px;
+}
+
+.close {
+  text-align: right;
+  width: 20px;
+  height: 20px;
+}
+
+.close:hover {
+  background: #e6f6fa;
+  border-radius: 5px;
+}
+
+td:nth-child(1) {
+  width: 90%;
+}
+td:nth-child(2) {
+  width: 5%;
+}
+td:nth-child(3) {
+  width: 5%;
+}
+
+.hiddenUrl {
+  position: absolute;
+  left: -9999px;
+}
+
+
+#footer {
+  border-top: 2px solid rgba(0,0,0,0.09);
+  color: gray;
+  padding: 10px 0px;
+  margin-bottom: 5px;
+  text-align: right;
+}
