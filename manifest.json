@@ -1,6 +1,6 @@
 {
   "name": "Categorize Tabs",
-  "version": "0.2",
+  "version": "0.3",
   "description": "Group Tabs by domain",
   "permissions": [
     "tabs",

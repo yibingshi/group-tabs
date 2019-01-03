@@ -128,6 +128,21 @@ td > span {
   background: #e6f6fa;
 }
 
+.close-dup {
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+  padding: 6px 10px;
+  background-color: white;
+  color: black;
+  border: 2px solid darkorange;
+  border-radius: 5px;
+}
+
+.close-dup:hover {
+  background-color: darkorange;
+  color: white;
+}
+
 td:nth-child(1) {
   width: 90%;
 }

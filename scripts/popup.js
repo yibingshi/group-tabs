@@ -13,13 +13,11 @@ function promiseQuery(options){
 window.onload = function() {
   let domains = {}
   let ids = []
-  let tab_count = 0;
   promiseQuery({currentWindow: true})
   .then(function(tabs){
     console.log(tabs);
     tabs.forEach((tab) => {
       if (tab.url.includes('.') === false) { return; }
-      tab_count += 1;
       var domain = tab.url.match(DOMAIN_REGEX)[1]
       if (domains.hasOwnProperty(domain)){
         domains[domain].push(tab);
@@ -27,8 +25,6 @@ window.onload = function() {
         domains[domain] = [tab]
       }
     })
-
-    document.getElementById('footer').innerHTML = `Total Tabs: ${tab_count}`
   })
   .then(function() {
     Object.keys(domains).sort(comparePinned).forEach((key) => {
@@ -100,8 +96,6 @@ window.onload = function() {
             var removed = document.getElementById(element.id);
             var parent = removed.parentNode;
             parent.removeChild(removed);
-            tab_count -= 1;
-            document.getElementById('footer').innerHTML = `Total Tabs: ${tab_count}`;
             if (!parent.hasChildNodes()){
               document.getElementById('tabList').removeChild(parent.parentNode);
             }
@@ -149,3 +143,24 @@ function comparePinned(tabA, tabB) {
     return 1;
   return 0;
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    var link = document.getElementById('closeDupTab');
+
+    link.addEventListener('click', function() {
+      promiseQuery({currentWindow: true})
+      .then(function(tabs){
+        var remainingTab = [];
+        tabs.forEach((tab) => {
+          if (remainingTab.find(t => t.url === tab.url) == undefined) {
+            remainingTab.push(tab);
+          } else {
+            chrome.tabs.remove(Number(tab.id), function(){});
+          }
+        });
+      })
+      .then(function(){
+        window.location.reload();
+      });
+    });
+});
