@@ -2,7 +2,7 @@
 
 const DOMAIN_REGEX = /(?:[-a-zA-Z0-9@:%_\+~.#=]{2,256}\.)?([-a-zA-Z0-9@:%_\+~#=]*)\.[a-z]{2,6}\b(?:[-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/i
 const DOMAIN_LENGTH = 20
-const TITLE_LENGTH = 47
+const TITLE_LENGTH = 37
 
 function promiseQuery(options){
   return new Promise(function(resolve,reject){
@@ -16,6 +16,7 @@ window.onload = function() {
   let tab_count = 0;
   promiseQuery({currentWindow: true})
   .then(function(tabs){
+    console.log(tabs);
     tabs.forEach((tab) => {
       if (tab.url.includes('.') === false) { return; }
       tab_count += 1;
@@ -30,19 +31,19 @@ window.onload = function() {
     document.getElementById('footer').innerHTML = `Total Tabs: ${tab_count}`
   })
   .then(function() {
-    Object.keys(domains).sort().forEach((key) => {
+    Object.keys(domains).sort(comparePinned).forEach((key) => {
       var all_tabs = '';
 
       domains[key].forEach((tab) => {
         ids.push(tab.id);
         var pinned = tab.pinned ? 'pinned-tab' : 'tab';
-        var pin_icon = tab.pinned ? '../images/pinned.png' : '../images/pin.png';
+        var pin_icon = tab.pinned ? '../images/pinned.png' : '../images/pin.png'
         all_tabs +=
           `<tr id=${tab.id}>` +
             '<td>' +
               `<input class="hiddenUrl" value=${tab.url}>` +
               `<img class="icon" src=${tab.favIconUrl || '../images/tab.png'} />` +
-              `<span class="tab">${tab.title.substring(0, TITLE_LENGTH)}</span>` +
+              `<span class=${pinned}>${tab.title.substring(0, TITLE_LENGTH)}</span>` +
             '</td>' +
             '<td>' +
               '<img class="copy" src="../images/copy.png" />' +
@@ -139,4 +140,12 @@ function Camelcase(str) {
     return null;
   }
   return str[0].toUpperCase() + str.slice(1);
+}
+
+function comparePinned(tabA, tabB) {
+  if (!tabA.pinned && tabB.pinned)
+     return -1;
+  if (tabA.pinned && !tabB.pinned)
+    return 1;
+  return 0;
 }
