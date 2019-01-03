@@ -39,7 +39,7 @@
 }
 
 .domain:hover {
-  color: #e6f6fa;
+  color: darkorange;
 }
 
 .tab{
@@ -78,24 +78,42 @@ td > span {
 
 .copy {
   text-align: right;
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
 }
 
 .copy:hover {
   background: #e6f6fa;
-  border-radius: 5px;
 }
 
 .close {
   text-align: right;
-  width: 20px;
-  height: 20px;
+  width: 14px;
+  height: 14px;
 }
 
 .close:hover {
   background: #e6f6fa;
-  border-radius: 5px;
+}
+
+.highlight {
+  text-align: right;
+  width: 16px;
+  height: 16px;
+}
+
+.highlight:hover {
+  background: #e6f6fa;
+}
+
+.bookmark {
+  text-align: right;
+  width: 16px;
+  height: 16px;
+}
+
+.bookmark:hover {
+  background: #e6f6fa;
 }
 
 td:nth-child(1) {

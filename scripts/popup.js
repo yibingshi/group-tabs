@@ -35,6 +35,8 @@ window.onload = function() {
 
       domains[key].forEach((tab) => {
         ids.push(tab.id);
+        var pinned = tab.pinned ? 'pinned-tab' : 'tab';
+        var pin_icon = tab.pinned ? '../images/pinned.png' : '../images/pin.png';
         all_tabs +=
           `<tr id=${tab.id}>` +
             '<td>' +
@@ -44,6 +46,12 @@ window.onload = function() {
             '</td>' +
             '<td>' +
               '<img class="copy" src="../images/copy.png" />' +
+            '</td>' +
+            '<td>' +
+              `<img class="highlight" src=${pin_icon} />` +
+            '</td>' +
+            '<td>' +
+              `<img class="bookmark" src='../images/star.png' />` +
             '</td>' +
             '<td>' +
               '<img class="close" src="../images/close.png" />' +
@@ -74,6 +82,18 @@ window.onload = function() {
           let url_div = element.firstElementChild.firstElementChild;
           url_div.select();
           document.execCommand("copy");
+        } else if (event.target.className == 'highlight'){
+          chrome.tabs.get(Number(element.id), function(tab){
+            chrome.tabs.update(Number(element.id), {'pinned': !tab.pinned}, function(){
+              window.location.reload();
+            });
+          });
+        } else if (event.target.className == 'bookmark'){
+          chrome.tabs.get(Number(element.id), function(tab){
+            chrome.bookmarks.create({'title': tab.title, 'url': tab.url}, function(){
+              window.location.reload();
+            });
+          });
         } else if (event.target.className == 'close'){
           chrome.tabs.remove(Number(element.id), function(){
             var removed = document.getElementById(element.id);
