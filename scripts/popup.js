@@ -15,6 +15,7 @@ window.onload = function() {
   let ids = []
   promiseQuery({currentWindow: true})
   .then(function(tabs){
+    console.log(tabs);
     tabs.forEach((tab) => {
       if (tab.url.includes('.') === false) { return; }
       var domain = tab.url.match(DOMAIN_REGEX)[1]
