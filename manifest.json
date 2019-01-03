@@ -5,6 +5,7 @@
   "permissions": [
     "tabs",
     "activeTab",
+    "bookmarks",
     "clipboardWrite"
   ],
   "background": {
