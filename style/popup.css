@@ -53,6 +53,18 @@
   cursor: pointer;
 }
 
+.pinned-tab{
+  font-size: 13px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+}
+
+.pinned-tab:hover {
+  font-size: 13px;
+  background: #e6f6fa;
+  cursor: pointer;
+}
+
 .domain > img {
   height: 20px;
   width: 20px;
